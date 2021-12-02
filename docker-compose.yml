@@ -1,0 +1,78 @@
+# Compose file version
+version: '3'
+
+# Docker networks
+networks:
+
+  back-end-network:
+    driver: bridge
+
+  system-network:
+    driver: bridge
+
+# Docker volumes
+volumes:
+
+  node_data_volume:
+    driver: local
+
+# Docker services
+services:
+
+  # Database service
+  database:
+    image: mysql:${MYSQL_TAG}
+    container_name: database
+    command: --default-authentication-plugin=mysql_native_password
+    restart: unless-stopped
+    tty: true
+    env_file:
+      - ./database/.env
+    environment:
+      MYSQL_TCP_PORT: ${DATABASE_EXPOSED_PORT}
+    ports:
+      - ${DATABASE_MAPPED_PORT}:${DATABASE_EXPOSED_PORT}
+    volumes:
+      - ./database/data:/var/lib/mysql
+    networks:
+      - back-end-network
+
+  # API service
+  api:
+    build:
+      context: ./api
+      args:
+        PHP_TAG: ${PHP_TAG}
+        API_EXPOSED_PORT: ${API_EXPOSED_PORT}
+    container_name: api
+    restart: unless-stopped
+    working_dir: /var/www/html
+    env_file:
+      - ./database/.env
+    environment:
+      DATABASE_EXPOSED_PORT: ${DATABASE_EXPOSED_PORT}
+    ports:
+      - ${API_MAPPED_PORT}:${API_EXPOSED_PORT}
+    volumes:
+      - ./api:/var/www/html
+    networks:
+      - back-end-network
+      - system-network
+
+  # App service
+  app:
+    build:
+      context: ./app
+      args:
+        NODE_TAG: ${NODE_TAG}
+        APP_EXPOSED_PORT: ${APP_EXPOSED_PORT}
+    container_name: app
+    restart: unless-stopped
+    working_dir: /var/www/html
+    ports:
+      - ${APP_MAPPED_PORT}:${APP_EXPOSED_PORT}
+    volumes:
+      - ./app:/var/www/html
+      - node_data_volume:/var/www/html
+    networks:
+      - system-network

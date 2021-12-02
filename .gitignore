@@ -5,3 +5,6 @@
 
 # gitkeep files
 !**/.gitkeep
+
+# Database persistent data
+database/data

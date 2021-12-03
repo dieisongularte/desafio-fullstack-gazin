@@ -13,7 +13,7 @@ networks:
 # Docker volumes
 volumes:
 
-  node_data_volume:
+  app-node-data:
     driver: local
 
 # Docker services
@@ -43,16 +43,17 @@ services:
       context: ./api
       args:
         PHP_TAG: ${PHP_TAG}
-        API_EXPOSED_PORT: ${API_EXPOSED_PORT}
     container_name: api
     restart: unless-stopped
     working_dir: /var/www/html
+    depends_on:
+      - database
     env_file:
       - ./database/.env
     environment:
       DATABASE_EXPOSED_PORT: ${DATABASE_EXPOSED_PORT}
     ports:
-      - ${API_MAPPED_PORT}:${API_EXPOSED_PORT}
+      - ${API_MAPPED_PORT}:8000
     volumes:
       - ./api:/var/www/html
     networks:
@@ -69,10 +70,12 @@ services:
     container_name: app
     restart: unless-stopped
     working_dir: /var/www/html
+    depends_on:
+      - api
     ports:
       - ${APP_MAPPED_PORT}:${APP_EXPOSED_PORT}
     volumes:
       - ./app:/var/www/html
-      - node_data_volume:/var/www/html
+      - app-node-data:/var/www/html
     networks:
       - system-network

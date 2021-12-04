@@ -21,6 +21,8 @@ class CreateDesenvolvedoresTable extends Migration
             $table->date('datanascimento');
             $table->integer('idade');
             $table->string('hobby');
+            $table->timestamps();
+            $table->softDeletes();
         });
     }
 

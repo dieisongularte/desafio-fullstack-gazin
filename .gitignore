@@ -6,5 +6,9 @@
 # gitkeep files
 !**/.gitkeep
 
+# node files
+**/package-lock.json
+**/yarn.lock
+
 # Database persistent data
 database/data

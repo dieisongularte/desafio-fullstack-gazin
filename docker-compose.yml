@@ -57,7 +57,7 @@ services:
     ports:
       - ${API_MAPPED_PORT}:${API_EXPOSED_PORT}
     volumes:
-      - ./api:/var/www/html:rw,rprivate
+      - ./api:/var/www/html
     networks:
       - back-end-network
       - system-network
@@ -78,6 +78,6 @@ services:
       - ${APP_MAPPED_PORT}:${APP_EXPOSED_PORT}
     volumes:
       - ./app:/var/www/html
-      - app-node-data:/var/www/html
+      - app-node-data:/var/www/html/node_modules
     networks:
       - system-network

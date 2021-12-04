@@ -10,7 +10,7 @@ class Desenvolvedor extends Model
 
     protected $table = 'desenvolvedores';
 
-    protected $timestamps = true;
+    public $timestamps = true;
 
     protected $fillable = [
         'nivel',

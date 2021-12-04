@@ -10,7 +10,7 @@ class Nivel extends Model
 
     protected $table = 'niveis';
 
-    protected $timestamps = true;
+    public $timestamps = true;
 
     protected $fillable = [
         'nivel'

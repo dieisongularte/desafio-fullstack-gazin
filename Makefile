@@ -1,7 +1,5 @@
 .DEFAULT_GOAL := help
 
-NODE_TAG := $(shell cat .env | grep NODE_TAG | sed 's/=/\ /g' | awk '{printf $$2}')
-
 help: ## This help
 	@awk 'BEGIN {FS = ":.*?## "} /^[a-zA-Z_-]+:.*?## / \
 	{printf "\033[36m%-25s\033[0m %s\n", $$1, $$2}' $(MAKEFILE_LIST)
@@ -29,9 +27,9 @@ logs: ## Show docker logs for a container
 exec-in-container: ## Execute a command in a container
 	@docker exec -it $(container) $(command)
 
-install-app-dependencies: ## Install app dependencies locally
+install-app-dependencies: create-dotenv-files ## Install app dependencies locally
 	@docker run --rm -it \
 		-v "$(PWD)"/app:/var/www/html \
 		-w /var/www/html \
-		node:$(NODE_TAG) \
+		node:$(shell cat .env | grep NODE_TAG | sed 's/=/\ /g' | awk '{printf $$2}') \
 		npm install

@@ -2,7 +2,11 @@ ARG PHP_TAG
 
 FROM php:${PHP_TAG}
 
+ARG API_EXPOSED_PORT
+
 WORKDIR /var/www/html
+
+ENV API_EXPOSED_PORT ${API_EXPOSED_PORT}
 
 COPY --from=composer /usr/bin/composer /usr/bin/composer
 
@@ -14,13 +18,4 @@ RUN apk add --no-cache \
         pdo \
         pdo_mysql
 
-RUN mkdir -p storage/framework/cache/data \
-    && mkdir -p -m 777 storage/framework/sessions \
-    && mkdir -p -m 777 storage/framework/views \
-    && cat .env.example > .env \
-    && chmod -R 777 storage \
-    && composer install \
-    && php artisan key:generate \
-    && php artisan config:cache
-
-CMD ["php","artisan","serve","--host","0.0.0.0"]
+EXPOSE ${API_EXPOSED_PORT}

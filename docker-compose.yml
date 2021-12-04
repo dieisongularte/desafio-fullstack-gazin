@@ -43,7 +43,9 @@ services:
       context: ./api
       args:
         PHP_TAG: ${PHP_TAG}
+        API_EXPOSED_PORT: ${API_EXPOSED_PORT}
     container_name: api
+    command: sh config.sh
     restart: unless-stopped
     working_dir: /var/www/html
     depends_on:
@@ -53,9 +55,9 @@ services:
     environment:
       DATABASE_EXPOSED_PORT: ${DATABASE_EXPOSED_PORT}
     ports:
-      - ${API_MAPPED_PORT}:8000
+      - ${API_MAPPED_PORT}:${API_EXPOSED_PORT}
     volumes:
-      - ./api:/var/www/html
+      - ./api:/var/www/html:rw,rprivate
     networks:
       - back-end-network
       - system-network

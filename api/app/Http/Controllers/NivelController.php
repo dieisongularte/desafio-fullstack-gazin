@@ -3,8 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Contracts\UseCases\Nivel\SaveNivelUseCaseInterface;
-use App\Http\Requests\StoreNivelRequest;
-use App\Http\Requests\UpdateNivelRequest;
+use App\Http\Requests\SaveNivelRequest;
 use App\Models\Nivel;
 
 class NivelController extends Controller
@@ -27,10 +26,10 @@ class NivelController extends Controller
     /**
      * Store a newly created resource in storage.
      *
-     * @param  \App\Http\Requests\StoreNivelRequest  $request
+     * @param  \App\Http\Requests\SaveNivelRequest  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(StoreNivelRequest $request, Nivel $nivel)
+    public function store(SaveNivelRequest $request, Nivel $nivel)
     {
         $nivel->fill($request->validated());
 
@@ -51,11 +50,11 @@ class NivelController extends Controller
     /**
      * Update the specified resource in storage.
      *
-     * @param  \App\Http\Requests\UpdateNivelRequest  $request
+     * @param  \App\Http\Requests\SaveNivelRequest  $request
      * @param  \App\Models\Nivel  $nivel
      * @return \Illuminate\Http\Response
      */
-    public function update(UpdateNivelRequest $request, Nivel $nivel)
+    public function update(SaveNivelRequest $request, Nivel $nivel)
     {
         $nivel->fill($request->validated());
 

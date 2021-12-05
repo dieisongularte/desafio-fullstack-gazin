@@ -2,15 +2,18 @@
 
 namespace App\Providers;
 
+use App\Contracts\UseCases\Nivel\DeleteNivelUseCaseInterface;
 use App\Contracts\UseCases\Nivel\SaveNivelUseCaseInterface;
 use App\Http\Resources\NivelResource;
+use App\UseCases\Nivel\DeleteNivelUseCase;
 use App\UseCases\Nivel\SaveNivelUseCase;
 use Illuminate\Support\ServiceProvider;
 
 class UseCaseServiceProvider extends ServiceProvider
 {
     private array $useCaseBindings = [
-        SaveNivelUseCaseInterface::class => SaveNivelUseCase::class
+        SaveNivelUseCaseInterface::class => SaveNivelUseCase::class,
+        DeleteNivelUseCaseInterface::class => DeleteNivelUseCase::class
     ];
 
     /**

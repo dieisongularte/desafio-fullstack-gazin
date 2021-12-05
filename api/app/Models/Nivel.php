@@ -21,4 +21,9 @@ class Nivel extends Model
         'updated_at',
         'deleted_at'
     ];
+
+    public function desenvolvedores()
+    {
+        return $this->hasMany(Desenvolvedor::class, 'nivel', 'id');
+    }
 }

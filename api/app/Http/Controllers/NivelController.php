@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Contracts\UseCases\Nivel\DeleteNivelUseCaseInterface;
 use App\Contracts\UseCases\Nivel\SaveNivelUseCaseInterface;
 use App\Http\Requests\SaveNivelRequest;
 use App\Models\Nivel;
@@ -9,7 +10,8 @@ use App\Models\Nivel;
 class NivelController extends Controller
 {
     public function __construct(
-        private SaveNivelUseCaseInterface $saveNivel
+        private SaveNivelUseCaseInterface $saveNivel,
+        private DeleteNivelUseCaseInterface $deleteNivel
     )
     {}
 
@@ -69,6 +71,6 @@ class NivelController extends Controller
      */
     public function destroy(Nivel $nivel)
     {
-        //
+        return response()->json($this->deleteNivel->execute($nivel));
     }
 }

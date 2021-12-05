@@ -35,7 +35,9 @@ class DesenvolvedorController extends Controller
     {
         $desenvolvedor->fill($request->validated());
 
-        return response()->json($this->saveDesenvolvedor->execute($desenvolvedor), 201);
+        $output = $this->saveDesenvolvedor->execute($desenvolvedor);
+
+        return response()->json($output, 201);
     }
 
     /**
@@ -60,7 +62,9 @@ class DesenvolvedorController extends Controller
     {
         $desenvolvedor->fill($request->validated());
 
-        return response()->json($this->saveDesenvolvedor->execute($desenvolvedor));
+        $output = $this->saveDesenvolvedor->execute($desenvolvedor);
+
+        return response()->json($output);
     }
 
     /**
@@ -71,6 +75,8 @@ class DesenvolvedorController extends Controller
      */
     public function destroy(Desenvolvedor $desenvolvedor)
     {
-        return response()->json($this->deleteDesenvolvedor->execute($desenvolvedor));
+        $this->deleteDesenvolvedor->execute($desenvolvedor);
+
+        return response()->noContent();
     }
 }

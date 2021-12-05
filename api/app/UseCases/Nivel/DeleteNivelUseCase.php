@@ -4,7 +4,7 @@ namespace App\UseCases\Nivel;
 
 use App\Contracts\UseCases\Nivel\DeleteNivelUseCaseInterface;
 use App\Models\Nivel;
-use Illuminate\Auth\Access\AuthorizationException;
+use Nette\NotImplementedException;
 
 class DeleteNivelUseCase implements DeleteNivelUseCaseInterface
 {
@@ -12,7 +12,7 @@ class DeleteNivelUseCase implements DeleteNivelUseCaseInterface
     {
         throw_unless(
             $nivel->desenvolvedores->isEmpty(),
-            new AuthorizationException('Não foi possível deletar, pois há vínculo com desenvolvedores')
+            new NotImplementedException('Não foi possível deletar, pois há vínculo com desenvolvedores')
         );
 
         $nivel->delete();

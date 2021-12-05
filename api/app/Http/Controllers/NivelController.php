@@ -35,7 +35,9 @@ class NivelController extends Controller
     {
         $nivel->fill($request->validated());
 
-        return response()->json($this->saveNivel->execute($nivel), 201);
+        $output = $this->saveNivel->execute($nivel);
+
+        return response()->json($output, 201);
     }
 
     /**
@@ -60,7 +62,9 @@ class NivelController extends Controller
     {
         $nivel->fill($request->validated());
 
-        return response()->json($this->saveNivel->execute($nivel));
+        $output = $this->saveNivel->execute($nivel);
+
+        return response()->json($output);
     }
 
     /**
@@ -71,6 +75,8 @@ class NivelController extends Controller
      */
     public function destroy(Nivel $nivel)
     {
-        return response()->json($this->deleteNivel->execute($nivel));
+        $this->deleteNivel->execute($nivel);
+
+        return response()->noContent();
     }
 }

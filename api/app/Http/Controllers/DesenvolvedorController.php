@@ -56,7 +56,9 @@ class DesenvolvedorController extends Controller
      */
     public function update(SaveDesenvolvedorRequest $request, Desenvolvedor $desenvolvedor)
     {
-        //
+        $desenvolvedor->fill($request->validated());
+
+        return response()->json($this->saveDesenvolvedor->execute($desenvolvedor));
     }
 
     /**

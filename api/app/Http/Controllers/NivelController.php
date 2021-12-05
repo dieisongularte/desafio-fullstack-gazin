@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Contracts\UseCases\Nivel\DeleteNivelUseCaseInterface;
 use App\Contracts\UseCases\Nivel\ReadAllNivelUseCaseInterface;
+use App\Contracts\UseCases\Nivel\ReadNivelUseCaseInterface;
 use App\Contracts\UseCases\Nivel\SaveNivelUseCaseInterface;
 use App\Http\Requests\SaveNivelRequest;
 use App\Models\Nivel;
@@ -12,6 +13,7 @@ class NivelController extends Controller
 {
     public function __construct(
         private ReadAllNivelUseCaseInterface $readAllNivel,
+        private ReadNivelUseCaseInterface $readNivel,
         private SaveNivelUseCaseInterface $saveNivel,
         private DeleteNivelUseCaseInterface $deleteNivel
     )
@@ -52,7 +54,9 @@ class NivelController extends Controller
      */
     public function show(Nivel $nivel)
     {
-        //
+        $output = $this->readNivel->execute($nivel);
+
+        return response()->json($output);
     }
 
     /**

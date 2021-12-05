@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers;
 
-use App\Contracts\UseCases\Nivel\CreateNivelUseCaseInterface;
+use App\Contracts\UseCases\Nivel\SaveNivelUseCaseInterface;
 use App\Http\Requests\StoreNivelRequest;
 use App\Http\Requests\UpdateNivelRequest;
 use App\Models\Nivel;
@@ -10,7 +10,7 @@ use App\Models\Nivel;
 class NivelController extends Controller
 {
     public function __construct(
-        private CreateNivelUseCaseInterface $createNivel
+        private SaveNivelUseCaseInterface $saveNivel
     )
     {}
 
@@ -34,7 +34,7 @@ class NivelController extends Controller
     {
         $nivel->fill($request->validated());
 
-        return response()->json($this->createNivel->execute($nivel), 201);
+        return response()->json($this->saveNivel->execute($nivel), 201);
     }
 
     /**
@@ -57,7 +57,9 @@ class NivelController extends Controller
      */
     public function update(UpdateNivelRequest $request, Nivel $nivel)
     {
-        //
+        $nivel->fill($request->validated());
+
+        return response()->json($this->saveNivel->execute($nivel));
     }
 
     /**

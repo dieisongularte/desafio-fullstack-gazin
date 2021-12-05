@@ -2,11 +2,11 @@
 
 namespace App\UseCases\Nivel;
 
-use App\Contracts\UseCases\Nivel\CreateNivelUseCaseInterface;
+use App\Contracts\UseCases\Nivel\SaveNivelUseCaseInterface;
 use App\Models\Nivel;
 use Illuminate\Http\Resources\Json\JsonResource;
 
-class CreateNivelUseCase implements CreateNivelUseCaseInterface
+class SaveNivelUseCase implements SaveNivelUseCaseInterface
 {
     public function __construct(
         private string $outputClass

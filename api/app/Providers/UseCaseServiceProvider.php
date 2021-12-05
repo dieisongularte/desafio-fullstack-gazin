@@ -4,6 +4,7 @@ namespace App\Providers;
 
 use App\Contracts\UseCases\Desenvolvedor\SaveDesenvolvedorUseCaseInterface;
 use App\Contracts\UseCases\Desenvolvedor\DeleteDesenvolvedorUseCaseInterface;
+use App\Contracts\UseCases\Desenvolvedor\ReadAllDesenvolvedorUseCaseInterface;
 use App\Contracts\UseCases\Nivel\DeleteNivelUseCaseInterface;
 use App\Contracts\UseCases\Nivel\ReadAllNivelUseCaseInterface;
 use App\Contracts\UseCases\Nivel\SaveNivelUseCaseInterface;
@@ -11,6 +12,7 @@ use App\Http\Resources\DesenvolvedorResource;
 use App\Http\Resources\NivelResource;
 use App\Http\Resources\PaginatedItemsList;
 use App\UseCases\Desenvolvedor\DeleteDesenvolvedorUseCase;
+use App\UseCases\Desenvolvedor\ReadAllDesenvolvedorUseCase;
 use App\UseCases\Desenvolvedor\SaveDesenvolvedorUseCase;
 use App\UseCases\Nivel\DeleteNivelUseCase;
 use App\UseCases\Nivel\ReadAllNivelUseCase;
@@ -23,6 +25,7 @@ class UseCaseServiceProvider extends ServiceProvider
         ReadAllNivelUseCaseInterface::class => ReadAllNivelUseCase::class,
         SaveNivelUseCaseInterface::class => SaveNivelUseCase::class,
         DeleteNivelUseCaseInterface::class => DeleteNivelUseCase::class,
+        ReadAllDesenvolvedorUseCaseInterface::class => ReadAllDesenvolvedorUseCase::class,
         SaveDesenvolvedorUseCaseInterface::class => SaveDesenvolvedorUseCase::class,
         DeleteDesenvolvedorUseCaseInterface::class => DeleteDesenvolvedorUseCase::class
     ];
@@ -45,6 +48,11 @@ class UseCaseServiceProvider extends ServiceProvider
             ->when(SaveNivelUseCase::class)
             ->needs('$outputClass')
             ->give(NivelResource::class);
+
+        $this->app
+            ->when(ReadAllDesenvolvedorUseCase::class)
+            ->needs('$outputClass')
+            ->give(PaginatedItemsList::class);
 
         $this->app
             ->when(SaveDesenvolvedorUseCase::class)

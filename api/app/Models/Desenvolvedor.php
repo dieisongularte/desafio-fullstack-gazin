@@ -30,4 +30,9 @@ class Desenvolvedor extends Model
     protected $dates = [
         'datanascimento'
     ];
+
+    public function nivel()
+    {
+        return $this->belongsTo(Nivel::class);
+    }
 }

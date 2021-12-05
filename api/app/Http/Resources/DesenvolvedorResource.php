@@ -14,6 +14,14 @@ class DesenvolvedorResource extends JsonResource
      */
     public function toArray($request)
     {
-        return parent::toArray($request);
+        return [
+            'id' => $this->id,
+            'nivel' => $this->nivel,
+            'nome' => $this->nome,
+            'sexo' => $this->sexo,
+            'datanascimento' => $this->datanascimento,
+            'idade' => $this->idade,
+            'hobby' => $this->hobby,
+        ];
     }
 }

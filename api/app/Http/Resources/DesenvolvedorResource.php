@@ -16,7 +16,7 @@ class DesenvolvedorResource extends JsonResource
     {
         return [
             'id' => $this->id,
-            'nivel' => $this->nivel,
+            'nivel_id' => $this->nivel_id,
             'nome' => $this->nome,
             'sexo' => $this->sexo,
             'datanascimento' => $this->datanascimento,

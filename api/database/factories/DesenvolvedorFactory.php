@@ -31,7 +31,7 @@ class DesenvolvedorFactory extends Factory
         $birthDateTime = Carbon::parse($this->faker->dateTimeBetween('-30 years', '-22 years'));
 
         return [
-            'nivel' => Nivel::inRandomOrder()->first(),
+            'nivel_id' => Nivel::inRandomOrder()->first(),
             'nome' => $name,
             'sexo' => $genderSign,
             'datanascimento' => $birthDateTime->format('Y-m-d'),

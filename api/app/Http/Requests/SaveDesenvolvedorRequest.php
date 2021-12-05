@@ -24,7 +24,7 @@ class SaveDesenvolvedorRequest extends FormRequest
     public function rules()
     {
         return [
-            'nivel' => 'required|exists:niveis,id',
+            'nivel_id' => 'required|exists:niveis,id',
             'nome' => 'required|string|max:255',
             'sexo' => 'required|string|size:1|in:M,F,O',
             'datanascimento' => 'required|date|before_or_equal:today',

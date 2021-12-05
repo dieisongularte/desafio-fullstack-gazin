@@ -13,7 +13,7 @@ class Desenvolvedor extends Model
     public $timestamps = true;
 
     protected $fillable = [
-        'nivel',
+        'nivel_id',
         'nome',
         'sexo',
         'datanascimento',

@@ -14,7 +14,7 @@ class AddForeignKeysToDesenvolvedoresTable extends Migration
     public function up()
     {
         Schema::table('desenvolvedores', function (Blueprint $table) {
-            $table->foreign('nivel', 'fk_desenvolvedores_niveis')
+            $table->foreign('nivel_id', 'fk_desenvolvedores_niveis')
                 ->references('id')
                 ->on('niveis')
                 ->onDelete('NO ACTION')

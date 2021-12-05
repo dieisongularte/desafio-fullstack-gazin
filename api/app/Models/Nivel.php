@@ -24,6 +24,6 @@ class Nivel extends Model
 
     public function desenvolvedores()
     {
-        return $this->hasMany(Desenvolvedor::class, 'nivel', 'id');
+        return $this->hasMany(Desenvolvedor::class);
     }
 }

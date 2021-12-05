@@ -4,12 +4,14 @@ namespace App\Http\Controllers;
 
 use App\Contracts\UseCases\Desenvolvedor\DeleteDesenvolvedorUseCaseInterface;
 use App\Contracts\UseCases\Desenvolvedor\SaveDesenvolvedorUseCaseInterface;
+use App\Contracts\UseCases\Nivel\ReadAllDesenvolvedorUseCaseInterface;
 use App\Http\Requests\SaveDesenvolvedorRequest;
 use App\Models\Desenvolvedor;
 
 class DesenvolvedorController extends Controller
 {
     public function __construct(
+        // private ReadAllDesenvolvedorUseCaseInterface $readAllDesenvolvedor,
         private SaveDesenvolvedorUseCaseInterface $saveDesenvolvedor,
         private DeleteDesenvolvedorUseCaseInterface $deleteDesenvolvedor
     )
@@ -22,7 +24,9 @@ class DesenvolvedorController extends Controller
      */
     public function index()
     {
-        //
+        // $output = $this->readAllDesenvolvedor->execute();
+
+        // return response()->json($output);
     }
 
     /**

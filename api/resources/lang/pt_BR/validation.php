@@ -13,11 +13,19 @@ return [
     |
     */
 
+    'before_or_equal' => ':attribute deve ser uma data anterior ou igual a :date.',
+    'date' => ':attribute não é uma data válida.',
+    'exists' => ':attribute selecionado é inválido.',
+    'in' => ':attribute selecionado é inválido.',
+    'integer' => ':attribute deve ser um inteiro.',
     'max' => [
-        'string' => 'O :attribute não deve ter mais que :max caracteres.'
+        'string' => ':attribute não deve ter mais que :max caracteres.'
     ],
     'required' => 'O campo :attribute é obrigatório.',
-    'string' => 'O :attribute deve ser uma string.',
+    'size' => [
+        'string' => ':attribute deve ter :size caracteres.',
+    ],
+    'string' => ':attribute deve ser uma string.',
 
     /*
     |--------------------------------------------------------------------------

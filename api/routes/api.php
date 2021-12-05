@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\DesenvolvedorController;
 use App\Http\Controllers\NivelController;
 use Illuminate\Support\Facades\Route;
 
@@ -18,4 +19,7 @@ Route::get('', fn () => response()->json([
     'name' => config('app.name'),
 ]));
 
-Route::apiResources(['nivel' => NivelController::class]);
+Route::apiResources([
+    'desenvolvedor' => DesenvolvedorController::class,
+    'nivel' => NivelController::class
+]);

@@ -2,15 +2,15 @@
 
 namespace App\Providers;
 
-use App\Contracts\UseCases\Nivel\CreateNivelUseCaseInterface;
+use App\Contracts\UseCases\Nivel\SaveNivelUseCaseInterface;
 use App\Http\Resources\NivelResource;
-use App\UseCases\Nivel\CreateNivelUseCase;
+use App\UseCases\Nivel\SaveNivelUseCase;
 use Illuminate\Support\ServiceProvider;
 
 class UseCaseServiceProvider extends ServiceProvider
 {
     private array $useCaseBindings = [
-        CreateNivelUseCaseInterface::class => CreateNivelUseCase::class
+        SaveNivelUseCaseInterface::class => SaveNivelUseCase::class
     ];
 
     /**
@@ -23,7 +23,7 @@ class UseCaseServiceProvider extends ServiceProvider
         $this->bindUseCases();
 
         $this->app
-            ->when(CreateNivelUseCase::class)
+            ->when(SaveNivelUseCase::class)
             ->needs('$outputClass')
             ->give(NivelResource::class);
     }

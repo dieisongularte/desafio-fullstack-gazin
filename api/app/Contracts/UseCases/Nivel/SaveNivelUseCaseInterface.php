@@ -5,7 +5,7 @@ namespace App\Contracts\UseCases\Nivel;
 use App\Models\Nivel;
 use Illuminate\Http\Resources\Json\JsonResource;
 
-interface CreateNivelUseCaseInterface
+interface SaveNivelUseCaseInterface
 {
     function execute(Nivel $nivel): JsonResource;
 }

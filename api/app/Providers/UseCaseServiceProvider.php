@@ -3,10 +3,12 @@
 namespace App\Providers;
 
 use App\Contracts\UseCases\Desenvolvedor\SaveDesenvolvedorUseCaseInterface;
+use App\Contracts\UseCases\Desenvolvedor\DeleteDesenvolvedorUseCaseInterface;
 use App\Contracts\UseCases\Nivel\DeleteNivelUseCaseInterface;
 use App\Contracts\UseCases\Nivel\SaveNivelUseCaseInterface;
 use App\Http\Resources\DesenvolvedorResource;
 use App\Http\Resources\NivelResource;
+use App\UseCases\Desenvolvedor\DeleteDesenvolvedorUseCase;
 use App\UseCases\Desenvolvedor\SaveDesenvolvedorUseCase;
 use App\UseCases\Nivel\DeleteNivelUseCase;
 use App\UseCases\Nivel\SaveNivelUseCase;
@@ -17,7 +19,8 @@ class UseCaseServiceProvider extends ServiceProvider
     private array $useCaseBindings = [
         SaveNivelUseCaseInterface::class => SaveNivelUseCase::class,
         DeleteNivelUseCaseInterface::class => DeleteNivelUseCase::class,
-        SaveDesenvolvedorUseCaseInterface::class => SaveDesenvolvedorUseCase::class
+        SaveDesenvolvedorUseCaseInterface::class => SaveDesenvolvedorUseCase::class,
+        DeleteDesenvolvedorUseCaseInterface::class => DeleteDesenvolvedorUseCase::class
     ];
 
     /**

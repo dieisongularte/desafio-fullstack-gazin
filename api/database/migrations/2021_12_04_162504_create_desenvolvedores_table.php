@@ -15,7 +15,7 @@ class CreateDesenvolvedoresTable extends Migration
     {
         Schema::create('desenvolvedores', function (Blueprint $table) {
             $table->id();
-            $table->unsignedBigInteger('nivel');
+            $table->unsignedBigInteger('nivel')->index();
             $table->string('nome');
             $table->char('sexo', 1)->comment('M - masculino; F - Feminino; O - Outros');
             $table->date('datanascimento');

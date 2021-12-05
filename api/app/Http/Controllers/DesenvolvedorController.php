@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Contracts\UseCases\Desenvolvedor\DeleteDesenvolvedorUseCaseInterface;
 use App\Contracts\UseCases\Desenvolvedor\ReadAllDesenvolvedorUseCaseInterface;
+use App\Contracts\UseCases\Desenvolvedor\ReadDesenvolvedorUseCaseInterface;
 use App\Contracts\UseCases\Desenvolvedor\SaveDesenvolvedorUseCaseInterface;
 use App\Http\Requests\SaveDesenvolvedorRequest;
 use App\Models\Desenvolvedor;
@@ -12,6 +13,7 @@ class DesenvolvedorController extends Controller
 {
     public function __construct(
         private ReadAllDesenvolvedorUseCaseInterface $readAllDesenvolvedor,
+        private ReadDesenvolvedorUseCaseInterface $readDesenvolvedor,
         private SaveDesenvolvedorUseCaseInterface $saveDesenvolvedor,
         private DeleteDesenvolvedorUseCaseInterface $deleteDesenvolvedor
     )
@@ -52,7 +54,9 @@ class DesenvolvedorController extends Controller
      */
     public function show(Desenvolvedor $desenvolvedor)
     {
-        //
+        $output = $this->readDesenvolvedor->execute($desenvolvedor);
+
+        return response()->json($output);
     }
 
     /**

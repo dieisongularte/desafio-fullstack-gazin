@@ -14,14 +14,21 @@ class DesenvolvedorResource extends JsonResource
      */
     public function toArray($request)
     {
+        $desenvolvedorData = $this->resource->toArray();
+
+        $desenvolvedorNivel = array_key_exists('nivel', $desenvolvedorData)
+            ? $desenvolvedorData['nivel']
+            : null;
+
         return [
-            'id' => $this->id,
-            'nivel_id' => $this->nivel_id,
-            'nome' => $this->nome,
-            'sexo' => $this->sexo,
-            'datanascimento' => $this->datanascimento,
-            'idade' => $this->idade,
-            'hobby' => $this->hobby,
+            'id' => $desenvolvedorData['id'],
+            'nivel_id' => $desenvolvedorData['nivel_id'],
+            'nome' => $desenvolvedorData['nome'],
+            'sexo' => $desenvolvedorData['sexo'],
+            'datanascimento' => $desenvolvedorData['datanascimento'],
+            'idade' => $desenvolvedorData['idade'],
+            'hobby' => $desenvolvedorData['hobby'],
+            'nivel' => $this->when(!empty($desenvolvedorNivel), $desenvolvedorNivel)
         ];
     }
 }

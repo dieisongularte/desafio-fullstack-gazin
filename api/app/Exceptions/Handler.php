@@ -2,7 +2,11 @@
 
 namespace App\Exceptions;
 
+use Illuminate\Database\Eloquent\ModelNotFoundException;
 use Illuminate\Foundation\Exceptions\Handler as ExceptionHandler;
+use Illuminate\Validation\ValidationException;
+use Nette\NotImplementedException;
+use Symfony\Component\HttpKernel\Exception\NotFoundHttpException;
 use Throwable;
 
 class Handler extends ExceptionHandler
@@ -37,5 +41,19 @@ class Handler extends ExceptionHandler
         $this->reportable(function (Throwable $e) {
             //
         });
+    }
+
+    public function render($request, Throwable $throwable)
+    {
+        if ($throwable instanceof ModelNotFoundException || $throwable instanceof NotFoundHttpException)
+            throw new CustomNotFoundException($throwable);
+
+        if ($throwable instanceof NotImplementedException)
+            throw new CustomNotImplementedException($throwable);
+
+        if ($throwable instanceof ValidationException)
+            throw new CustomValidationException($throwable);
+
+        return parent::render($request, $throwable);
     }
 }

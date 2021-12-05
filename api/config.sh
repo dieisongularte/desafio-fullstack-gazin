@@ -16,4 +16,6 @@ php artisan key:generate
 
 php artisan config:cache
 
+php artisan migrate:refresh --seed
+
 php artisan serve --host 0.0.0.0 --port $API_EXPOSED_PORT

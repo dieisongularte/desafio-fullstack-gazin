@@ -20,7 +20,7 @@ class ReadAllDesenvolvedorUseCase implements ReadAllDesenvolvedorUseCaseInterfac
     {
         $queryBuilder = QueryBuilder::for(Desenvolvedor::class)
             ->allowedSorts('nome', 'sexo', 'datanascimento', 'idade', 'hobby')
-            ->allowedIncludes(['nivel'])
+            ->allowedIncludes('nivel')
             ->allowedFilters(
                 AllowedFilter::partial('nome'),
                 AllowedFilter::exact('sexo'),

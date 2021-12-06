@@ -5,8 +5,7 @@ const routes: Routes = [
   {
     path: '',
     data: {
-      breadcrumb: 'Home',
-      title: 'Home'
+      breadcrumb: null
     },
     children: [
       {

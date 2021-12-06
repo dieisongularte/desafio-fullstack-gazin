@@ -4,18 +4,15 @@ import { BehaviorSubject } from 'rxjs';
 @Injectable()
 export class SideBarService
 {
-  constructor(
-    private sidebar: BehaviorSubject<string> = new BehaviorSubject<string>('')
-  )
-  {}
+  private showSidebar: BehaviorSubject<boolean> = new BehaviorSubject<boolean>(true);
 
-  getSidebarEvent(): BehaviorSubject<string>
+  getShowSidebar(): BehaviorSubject<boolean>
   {
-    return this.sidebar;
+    return this.showSidebar;
   }
 
-  setSidebarEvent(data: string)
+  setShowSidebar(data: boolean)
   {
-    this.sidebar.next(data);
+    this.showSidebar.next(data);
   }
 }

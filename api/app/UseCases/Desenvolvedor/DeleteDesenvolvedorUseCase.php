@@ -7,10 +7,8 @@ use App\Models\Desenvolvedor;
 
 class DeleteDesenvolvedorUseCase implements DeleteDesenvolvedorUseCaseInterface
 {
-    public function execute(Desenvolvedor $desenvolvedor): int
+    public function execute(Desenvolvedor $desenvolvedor): void
     {
         $desenvolvedor->delete();
-
-        return $desenvolvedor->getKey();
     }
 }

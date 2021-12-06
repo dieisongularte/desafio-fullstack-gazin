@@ -6,5 +6,5 @@ use App\Models\Nivel;
 
 interface DeleteNivelUseCaseInterface
 {
-    function execute(Nivel $nivel): int;
+    function execute(Nivel $nivel): void;
 }

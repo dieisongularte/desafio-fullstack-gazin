@@ -6,5 +6,5 @@ use App\Models\Desenvolvedor;
 
 interface DeleteDesenvolvedorUseCaseInterface
 {
-    function execute(Desenvolvedor $desenvolvedor): int;
+    function execute(Desenvolvedor $desenvolvedor): void;
 }

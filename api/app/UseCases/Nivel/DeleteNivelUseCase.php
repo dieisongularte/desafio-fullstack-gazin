@@ -8,7 +8,7 @@ use Nette\NotImplementedException;
 
 class DeleteNivelUseCase implements DeleteNivelUseCaseInterface
 {
-    public function execute(Nivel $nivel): int
+    public function execute(Nivel $nivel): void
     {
         throw_unless(
             $nivel->desenvolvedores->isEmpty(),
@@ -16,7 +16,5 @@ class DeleteNivelUseCase implements DeleteNivelUseCaseInterface
         );
 
         $nivel->delete();
-
-        return $nivel->getKey();
     }
 }

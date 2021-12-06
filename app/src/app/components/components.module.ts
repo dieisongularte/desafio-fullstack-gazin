@@ -6,9 +6,11 @@ import { TextInputComponent } from './input/text-input/text-input.component';
 import { InputErrorComponent } from './input/input-error/input-error.component';
 import { DateInputComponent } from './input/date-input/date-input.component';
 import { TableFilterComponent } from './table/filter/table-filter.component';
-import { NotificationComponent } from './common/notification/notification.component';
 import { EmptyTableComponent } from './table/empty-table/empty-table.component';
 import { TableComponent } from './table/table/table.component';
+import { LoadingComponent } from './common/loading/loading.component';
+import { BreadcrumbComponent } from './common/breadcrumb/breadcrumb.component';
+import { DropdownInputComponent } from './input/dropdown-input/dropdown-input.component';
 
 @NgModule({
   declarations: [
@@ -18,12 +20,26 @@ import { TableComponent } from './table/table/table.component';
     InputErrorComponent,
     DateInputComponent,
     TableFilterComponent,
-    NotificationComponent,
     EmptyTableComponent,
     TableComponent,
+    LoadingComponent,
+    BreadcrumbComponent,
+    DropdownInputComponent,
   ],
   imports: [
     CommonModule
+  ],
+  exports: [
+    SideBarComponent,
+    HeaderComponent,
+    TextInputComponent,
+    InputErrorComponent,
+    DateInputComponent,
+    TableFilterComponent,
+    EmptyTableComponent,
+    TableComponent,
+    LoadingComponent,
+    BreadcrumbComponent,
   ]
 })
 export class ComponentsModule { }

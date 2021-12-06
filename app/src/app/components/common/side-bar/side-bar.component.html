@@ -2,7 +2,7 @@
     <button class="close-button" (click)="hideSideBar()">
         <i class="fa fa-times"></i>
     </button>
-    <a href="#">Home</a>
-    <a href="#">Desenvolvedor</a>
-    <a href="#">Nível</a>
+    <a [routerLink]="'/'">Home</a>
+    <a [routerLink]="'/desenvolvedor'">Desenvolvedor</a>
+    <a [routerLink]="'/nivel'">Nível</a>
 </aside>

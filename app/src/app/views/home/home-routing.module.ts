@@ -5,6 +5,9 @@ import { HomeComponent } from './home/home.component';
 const routes: Routes = [
   {
     path: '',
+    data: {
+      breadcrumb: null
+    },
     component: HomeComponent
   }
 ];

@@ -1,4 +1,5 @@
 import { NgModule } from '@angular/core';
+import { BreadcrumbModule } from 'primeng/breadcrumb';
 import { BrowserModule } from '@angular/platform-browser';
 import { HttpClientModule } from '@angular/common/http';
 
@@ -10,6 +11,7 @@ import { RequestService } from './services/request.service';
 import { LoadingService } from './services/loading.service';
 import { SideBarService } from './services/side-bar.service';
 import { BrDatePipe } from './pipes/br-date.pipe';
+import { RouterModule } from '@angular/router';
 
 @NgModule({
   declarations: [
@@ -17,10 +19,11 @@ import { BrDatePipe } from './pipes/br-date.pipe';
     BrDatePipe
   ],
   imports: [
-    BrowserModule,
     AppRoutingModule,
+    BrowserModule,
     ComponentsModule,
-    HttpClientModule
+    HttpClientModule,
+    RouterModule
   ],
   providers: [
     LoadingService,

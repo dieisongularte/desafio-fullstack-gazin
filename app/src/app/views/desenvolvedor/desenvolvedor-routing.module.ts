@@ -7,11 +7,14 @@ const routes: Routes = [
   {
     path: '',
     data: {
-      breadcrumb: 'Desenvolvedor'
+      breadcrumb: null
     },
     children: [
       {
         path: '',
+        data: {
+          breadcrumb: null
+        },
         component: DesenvolvedorListComponent
       },
       {
@@ -19,12 +22,7 @@ const routes: Routes = [
         data: {
           breadcrumb: 'Cadastro'
         },
-        children: [
-          {
-            path: '',
-            component: DesenvolvedorFormComponent
-          }
-        ]
+        component: DesenvolvedorFormComponent
       }
     ]
   }

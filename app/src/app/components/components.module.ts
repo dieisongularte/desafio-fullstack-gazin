@@ -1,4 +1,5 @@
 import { NgModule } from '@angular/core';
+import { BreadcrumbModule } from 'primeng/breadcrumb';
 import { CommonModule } from '@angular/common';
 import { SideBarComponent } from './common/side-bar/side-bar.component';
 import { HeaderComponent } from './common/header/header.component';
@@ -27,7 +28,8 @@ import { DropdownInputComponent } from './input/dropdown-input/dropdown-input.co
     DropdownInputComponent,
   ],
   imports: [
-    CommonModule
+    CommonModule,
+    BreadcrumbModule,
   ],
   exports: [
     SideBarComponent,

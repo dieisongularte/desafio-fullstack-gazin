@@ -7,24 +7,22 @@ const routes: Routes = [
   {
     path: '',
     data: {
-      breadcrumb: 'Nível'
+      breadcrumb: null,
     },
     children: [
       {
         path: '',
-        component: NivelListComponent
+        data: {
+          breadcrumb: null,
+        },
+        component: NivelListComponent,
       },
       {
         path: ':nivelId',
         data: {
           breadcrumb: 'Cadastro'
         },
-        children: [
-          {
-            path: '',
-            component: NivelFormComponent
-          }
-        ]
+        component: NivelFormComponent
       }
     ]
   }

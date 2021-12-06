@@ -5,38 +5,42 @@ const routes: Routes = [
   {
     path: '',
     data: {
-      breadcrumb: 'home',
+      breadcrumb: 'Home',
       title: 'Home'
     },
     children: [
       {
         path: '',
+        data: {
+          breadcrumb: null
+        },
         loadChildren: () => import('./views/home/home.module').then(({ HomeModule }) => HomeModule)
       },
       {
         path: 'nivel',
-        loadChildren: () => import('./views/nivel/nivel.module').then(({ NivelModule }) => NivelModule),
         data: {
-          breadcrumb: '',
+          breadcrumb: 'Nível',
           title: 'Nível'
-        }
+        },
+        loadChildren: () => import('./views/nivel/nivel.module').then(({ NivelModule }) => NivelModule)
       },
       {
         path: 'desenvolvedor',
-        loadChildren: () => import('./views/desenvolvedor/desenvolvedor.module').then(({ DesenvolvedorModule }) => DesenvolvedorModule),
         data: {
-          breadcrumb: '',
+          breadcrumb: 'Desenvolvedor',
           title: 'Desenvolvedor'
-        }
+        },
+        loadChildren: () => import('./views/desenvolvedor/desenvolvedor.module').then(({ DesenvolvedorModule }) => DesenvolvedorModule)
       }
     ]
   },
   {
     path: 'error',
-    loadChildren: () => import('./views/errors/errors.module').then(({ ErrorsModule }) => ErrorsModule),
     data: {
-      menu: false
-    }
+      menu: false,
+      breadcrumb: null
+    },
+    loadChildren: () => import('./views/errors/errors.module').then(({ ErrorsModule }) => ErrorsModule),
   },
   {
     path: '**',

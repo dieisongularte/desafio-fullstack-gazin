@@ -1,11 +1,14 @@
-<app-loading></app-loading>
-<header>
-  <app-header></app-header>
-</header>
+<app-loading *ngIf="showLoadingComponent"></app-loading>
+
+<app-side-bar></app-side-bar>
+
 <main>
-  <app-side-bar></app-side-bar>
-  <div>
-    <app-breadcrumb></app-breadcrumb>
+  <header>
+    <app-header></app-header>
+  </header>
+
+  <div class="container" (click)="hideSideBar()">
+    <app-breadcrumb *ngIf=""></app-breadcrumb>
     <router-outlet></router-outlet>
   </div>
 </main>

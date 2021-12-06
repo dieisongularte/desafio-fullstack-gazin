@@ -1,1 +1,8 @@
-<p>side-bar works!</p>
+<aside class="side-bar-container" [ngClass]="{'visible': showSideBar, 'invisible': !showSideBar}">
+    <button class="close-button" (click)="hideSideBar()">
+        <i class="fa fa-times"></i>
+    </button>
+    <a href="#">Home</a>
+    <a href="#">Desenvolvedor</a>
+    <a href="#">Nível</a>
+</aside>

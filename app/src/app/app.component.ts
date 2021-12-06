@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { LoadingService } from './services/loading.service';
 import { SideBarService } from './services/side-bar.service';
 
@@ -7,18 +7,24 @@ import { SideBarService } from './services/side-bar.service';
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.scss']
 })
-export class AppComponent
+export class AppComponent implements OnInit
 {
-  get showLoadingComponent(): boolean
-  {
-    return this.loadingService?.getLoading()?.value || false;
-  }
+  showLoadingComponent: boolean = false;
 
   constructor(
     private loadingService: LoadingService,
     private sideBarService: SideBarService
   )
   {}
+
+  ngOnInit(): void
+  {
+    this.loadingService.getShowLoading().subscribe(
+      (showLoading: boolean) => {
+        this.showLoadingComponent = showLoading;
+      }
+    );
+  }
 
   hideSideBar(): void
   {

@@ -3,12 +3,14 @@ import { Injectable } from '@angular/core';
 import { Observable, tap } from 'rxjs';
 import { environment } from 'src/environments/environment';
 import { Entity } from '../entities/entity';
+import { LoadingService } from './loading.service';
 
 @Injectable()
 export class RequestService
 {
   constructor(
-    private http: HttpClient
+    private http: HttpClient,
+    private loadingService: LoadingService
   )
   {}
 
@@ -17,14 +19,16 @@ export class RequestService
     const url = `${ environment.API_URL }/${ endpoint }`;
     const headers = this.headers();
 
+    this.loadingService.setShowLoading(true);
     return this.http.get<any>(url, { headers }).pipe(
       tap(
         (success: any) => {
-          console.log(success);
+          this.loadingService.setShowLoading(false);
         }
       ),
       tap(
         (error: HttpErrorResponse) => {
+          this.loadingService.setShowLoading(false);
           console.log(error);
         }
       )
@@ -39,11 +43,12 @@ export class RequestService
     return this.http.post<any>(url, data, { headers }).pipe(
       tap(
         (success: any) => {
-          console.log(success);
+          this.loadingService.setShowLoading(false);
         }
       ),
       tap(
         (error: HttpErrorResponse) => {
+          this.loadingService.setShowLoading(false);
           console.log(error);
         }
       )
@@ -58,18 +63,19 @@ export class RequestService
     return this.http.post<any>(url, data, { headers }).pipe(
       tap(
         (success: any) => {
-          console.log(success);
+          this.loadingService.setShowLoading(false);
         }
       ),
       tap(
         (error: HttpErrorResponse) => {
+          this.loadingService.setShowLoading(false);
           console.log(error);
         }
       )
     );
   }
 
-  public delete(endpoint: string, data: Entity): Observable<any>
+  public delete(endpoint: string): Observable<any>
   {
     const url = `${ environment.API_URL }/${ endpoint }`;
     const headers = this.headers();
@@ -77,11 +83,13 @@ export class RequestService
     return this.http.post<any>(url, { headers }).pipe(
       tap(
         (success: any) => {
+          this.loadingService.setShowLoading(false);
           console.log(success);
         }
       ),
       tap(
         (error: HttpErrorResponse) => {
+          this.loadingService.setShowLoading(false);
           console.log(error);
         }
       )

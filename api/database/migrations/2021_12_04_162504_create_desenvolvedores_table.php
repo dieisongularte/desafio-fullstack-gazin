@@ -23,6 +23,11 @@ class CreateDesenvolvedoresTable extends Migration
             $table->string('hobby');
             $table->timestamps();
             $table->softDeletes();
+
+            $table->foreign('nivel_id', 'fk_desenvolvedores_niveis')->references('id')
+                ->on('niveis')
+                ->onDelete('NO ACTION')
+                ->onUpdate('NO ACTION');
         });
     }
 

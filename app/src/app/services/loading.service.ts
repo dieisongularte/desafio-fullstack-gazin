@@ -4,17 +4,14 @@ import { BehaviorSubject } from 'rxjs';
 @Injectable()
 export class LoadingService
 {
-  constructor(
-    private loading: BehaviorSubject<string> = new BehaviorSubject<string>('')
-  )
-  {}
+  private loading: BehaviorSubject<boolean> = new BehaviorSubject<boolean>(false);
   
-  getLoading(): BehaviorSubject<string>
+  getLoading(): BehaviorSubject<boolean>
   {
     return this.loading;
   }
 
-  setLoading(data: string)
+  setLoading(data: boolean)
   {
     this.loading.next(data);
   }

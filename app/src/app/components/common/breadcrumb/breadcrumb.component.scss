@@ -1,5 +1,23 @@
 ::ng-deep {
-    .hideFirstChevron > ul > li:nth-child(2) {
+    .hideBreadcrumb > ul > li {
         display: none;
+    }
+
+    .breadcrumb {
+        margin-top: 10px;
+
+        & > ul > li > a > span {
+            font-size: 15px;
+            color: #818181;
+        }
+
+        & > ul > li > a > span:nth-child(2):nth-child(n) {
+            padding-left: 2px;
+        }
+
+        & > ul > li:nth-child(n+2)::before {
+            color: #000;
+            font-size: 13px;
+        }
     }
 }

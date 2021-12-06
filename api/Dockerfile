@@ -18,4 +18,6 @@ RUN apk add --no-cache \
         pdo \
         pdo_mysql
 
+RUN composer install
+
 EXPOSE ${API_EXPOSED_PORT}

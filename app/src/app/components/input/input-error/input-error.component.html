@@ -1,1 +1,7 @@
-<p>input-error works!</p>
+<div class="div-error">
+  <span><b [ngIf]="control?.errors?.['required']"> * Campo obrigatório </b></span>
+  <span><b *ngIf="control?.errors?.['minlength']"> * O número mínimo é de {{ control.errors?.['minlength'].requiredLength }} caracteres </b></span>
+  <span><b *ngIf="control?.errors?.['maxlength']"> * O número máximo é de {{ control.errors?.['maxlength'].requiredLength }} caracteres </b></span>
+  <span><b *ngIf="control?.errors?.['customError']"> * {{ control.errors?.['message'] }}</b></span>
+  <span><b *ngIf="control?.errors?.['pattern']"> * Padrão inválido. <span>{{ msgPattern }}</span></b></span>
+</div>

@@ -12,6 +12,10 @@ import { TableComponent } from './table/table/table.component';
 import { LoadingComponent } from './common/loading/loading.component';
 import { BreadcrumbComponent } from './common/breadcrumb/breadcrumb.component';
 import { DropdownInputComponent } from './input/dropdown-input/dropdown-input.component';
+import { CardComponent } from './card/card.component';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { InputTextModule } from 'primeng/inputtext';
+import { KeyFilterModule } from 'primeng/keyfilter';
 
 @NgModule({
   declarations: [
@@ -26,22 +30,28 @@ import { DropdownInputComponent } from './input/dropdown-input/dropdown-input.co
     LoadingComponent,
     BreadcrumbComponent,
     DropdownInputComponent,
+    CardComponent
   ],
   imports: [
     CommonModule,
     BreadcrumbModule,
+    FormsModule,
+    ReactiveFormsModule,
+    InputTextModule,
+    KeyFilterModule
   ],
   exports: [
     SideBarComponent,
     HeaderComponent,
     TextInputComponent,
-    InputErrorComponent,
     DateInputComponent,
     TableFilterComponent,
     EmptyTableComponent,
     TableComponent,
     LoadingComponent,
     BreadcrumbComponent,
+    DropdownInputComponent,
+    CardComponent
   ]
 })
 export class ComponentsModule { }

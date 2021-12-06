@@ -3,7 +3,7 @@
         <i class="fa fa-times"></i>
     </button>
 
-    <a [routerLink]="'/'">Home</a>
-    <a [routerLink]="'/desenvolvedor'">Desenvolvedor</a>
-    <a [routerLink]="'/nivel'">Nível</a>
+    <a [routerLink]="'/'" (click)="hideSideBar()">Home</a>
+    <a [routerLink]="'/desenvolvedor'" (click)="hideSideBar()">Desenvolvedor</a>
+    <a [routerLink]="'/nivel'" (click)="hideSideBar()">Nível</a>
 </aside>

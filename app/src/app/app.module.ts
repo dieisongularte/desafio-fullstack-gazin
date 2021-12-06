@@ -1,5 +1,4 @@
 import { NgModule } from '@angular/core';
-import { BreadcrumbModule } from 'primeng/breadcrumb';
 import { BrowserModule } from '@angular/platform-browser';
 import { HttpClientModule } from '@angular/common/http';
 

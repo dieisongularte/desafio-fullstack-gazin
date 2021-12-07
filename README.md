@@ -7,9 +7,10 @@
 Tabela de conteúdos
 =================
 <!--ts-->
-   * [Descrição do projeto](#Descrição-do-projeto)
-   * [Tabela de Conteúdos](#tabela-de-conteudo)
-   * [Pré-requisitos](#pre-requisitos)
+   * [Descrição do projeto](#descrição-do-projeto)
+   * [Tabela de Conteúdos](#tabela-de-conteúdos)
+   * [Features](#features)
+   * [Pré-requisitos](#pré-requisitos)
    * [Como usar](#como-usar)
    * [Tecnologias](#tecnologias)
 <!--te-->

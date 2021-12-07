@@ -2,7 +2,7 @@
 
 ## Descrição do Projeto
 
-<p>Teste técnico para o ingresso de novos desenvolvedores junto a Gazin<Tech>, desenvolvido para avaliação.</p>
+<p>Teste técnico para o ingresso de novos desenvolvedores junto a Gazin< Tech >, desenvolvido para avaliação.</p>
 
 Tabela de conteúdos
 =================

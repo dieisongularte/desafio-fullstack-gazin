@@ -7,5 +7,5 @@ use Illuminate\Support\Collection;
 
 interface ReadAllDesenvolvedorUseCaseInterface
 {
-    function execute(): Collection | JsonResource;
+    function execute(?int $itemsPerPage, ?int $page): Collection | JsonResource;
 }

@@ -8,6 +8,7 @@ use App\Contracts\UseCases\Desenvolvedor\ReadDesenvolvedorUseCaseInterface;
 use App\Contracts\UseCases\Desenvolvedor\SaveDesenvolvedorUseCaseInterface;
 use App\Http\Requests\SaveDesenvolvedorRequest;
 use App\Models\Desenvolvedor;
+use Illuminate\Http\Request;
 
 class DesenvolvedorController extends Controller
 {
@@ -24,9 +25,12 @@ class DesenvolvedorController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Request $request)
     {
-        $output = $this->readAllDesenvolvedor->execute();
+        $perPage = $request->query('perPage', NULL);
+        $page = $request->query('page', NULL);
+
+        $output = $this->readAllDesenvolvedor->execute($perPage, $page);
 
         return response()->json($output);
     }

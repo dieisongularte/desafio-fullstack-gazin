@@ -33,7 +33,7 @@ class CustomNotFoundException extends Exception
     public function render($request)
     {
         if ($this->exception instanceof ModelNotFoundException)
-            $message = 'Registro não encontrado.';
+            $message = 'Registro(s) não encontrado(s).';
         else if ($this->exception instanceof NotFoundHttpException)
             $message = 'Rota não encontrada.';
         else

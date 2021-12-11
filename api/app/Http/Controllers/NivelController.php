@@ -8,6 +8,7 @@ use App\Contracts\UseCases\Nivel\ReadNivelUseCaseInterface;
 use App\Contracts\UseCases\Nivel\SaveNivelUseCaseInterface;
 use App\Http\Requests\SaveNivelRequest;
 use App\Models\Nivel;
+use Illuminate\Http\Request;
 
 class NivelController extends Controller
 {
@@ -24,9 +25,12 @@ class NivelController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Request $request)
     {
-        $output = $this->readAllNivel->execute();
+        $perPage = $request->query('perPage', NULL);
+        $page = $request->query('page', NULL);
+
+        $output = $this->readAllNivel->execute($perPage, $page);
 
         return response()->json($output);
     }

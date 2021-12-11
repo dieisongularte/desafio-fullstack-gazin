@@ -4,6 +4,7 @@ namespace App\UseCases\Desenvolvedor;
 
 use App\Contracts\UseCases\Desenvolvedor\ReadAllDesenvolvedorUseCaseInterface;
 use App\Models\Desenvolvedor;
+use Illuminate\Database\Eloquent\ModelNotFoundException;
 use Illuminate\Http\Resources\Json\JsonResource;
 use Illuminate\Support\Collection;
 use Spatie\QueryBuilder\AllowedFilter;
@@ -16,7 +17,7 @@ class ReadAllDesenvolvedorUseCase implements ReadAllDesenvolvedorUseCaseInterfac
     )
     {}
 
-    public function execute(): Collection | JsonResource
+    public function execute(?int $itemsPerPage, ?int $page): Collection | JsonResource
     {
         $queryBuilder = QueryBuilder::for(Desenvolvedor::class)
             ->allowedSorts('nome', 'sexo', 'datanascimento', 'idade', 'hobby')
@@ -29,14 +30,21 @@ class ReadAllDesenvolvedorUseCase implements ReadAllDesenvolvedorUseCaseInterfac
                 AllowedFilter::partial('hobby')
             );
 
-        if (request()->has('perPage') || request()->has('page')) {
-            $itemsPerPage = request()->query('perPage', 10);
-            $lengthAwarePaginator = $queryBuilder->paginate($itemsPerPage)->appends(request()->query());
-            $output = new $this->outputClass($lengthAwarePaginator);
-        } else {
-            $output = $queryBuilder->get();
+        if (is_null($itemsPerPage) && is_null($page)) {
+            $desenvolvedores = $queryBuilder->get();
+
+            throw_unless($desenvolvedores->isNotEmpty(), new ModelNotFoundException());
+
+            return $desenvolvedores;
         }
 
-        return $output;
+        if (!is_null($page) && is_null($itemsPerPage))
+            $itemsPerPage = 10;
+
+        $desenvolvedores = $queryBuilder->paginate($itemsPerPage);
+
+        throw_unless($desenvolvedores->isNotEmpty(), new ModelNotFoundException());
+
+        return new $this->outputClass($desenvolvedores);
     }
 }

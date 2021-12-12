@@ -1,23 +1,35 @@
 ::ng-deep {
-    .hideBreadcrumb > ul > li {
-        display: none;
+  .hideBreadcrumb > ul > li {
+    display: none;
+  }
+
+  .breadcrumb {
+    margin-top: 10px;
+
+    & > ul > li > a > span {
+      font-size: 15px;
+      color: #8f8d8d !important;
+      text-decoration: none;
+      transition: color .5s, text-decoration .5s;
+
+      &:hover {
+        color: #000 !important;
+        text-decoration: underline;
+      }
     }
 
-    .breadcrumb {
-        margin-top: 10px;
-
-        & > ul > li > a > span {
-            font-size: 15px;
-            color: #818181;
-        }
-
-        & > ul > li > a > span:nth-child(2):nth-child(n) {
-            padding-left: 2px;
-        }
-
-        & > ul > li:nth-child(n+2)::before {
-            color: #000;
-            font-size: 13px;
-        }
+    & > ul > li > a > span:nth-child(2):nth-child(n) {
+      padding-left: 2px;
     }
+
+    & > ul > li:nth-child(n + 2) {
+      margin: 0 2px;
+
+      &::before {
+        color: #000;
+        font-size: 13px;
+      }
+    }
+
+  }
 }

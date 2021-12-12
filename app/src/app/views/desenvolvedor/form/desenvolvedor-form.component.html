@@ -1,12 +1,75 @@
-<app-card [title]="'Dados Gerais'" [enableFooter]="true">
+<form [formGroup]="form">
+  <app-card [title]="'Dados do Desenvolvedor'" [enableFooter]="true">
     <div card-body>
+      <div class="grid-container mt-3 mb-2">
 
+        <div class="grid-area">
+          <span class="p-float-label">
+            <input id="nome-input" class="p-inputtext-sm w-100" formControlName="nome" type="text" pInputText/>
+            <label for="nome-input">Nome</label>
+          </span>
+          <inga-input-error [control]="form.get('nome')"></inga-input-error>
+        </div>
+
+        <div class="grid-area">
+          <span class="p-float-label">
+            <p-dropdown inputId="sexo-input" styleClass="p-inputtext-sm w-100" placeholder="Sexo" [options]="sexoList" formControlName="sexo" optionLabel="description" optionValue="sign" [virtualScroll]="false"></p-dropdown>
+            <label for="sexo-input">Sexo</label>
+          </span>
+          <inga-input-error [control]="form.get('sexo')"></inga-input-error>
+        </div>
+
+        <div class="grid-area">
+          <span class="p-float-label">
+            <p-dropdown inputId="nivel-input" styleClass="p-inputtext-sm w-100" placeholder="Nível" [options]="nivelList" formControlName="nivel_id" optionLabel="nivel" optionValue="id" [virtualScroll]="false"></p-dropdown>
+            <label for="nivel-input">Nível</label>
+          </span>
+          <inga-input-error [control]="form.get('nivel_id')"></inga-input-error>
+        </div>
+
+        <div class="grid-area">
+          <span class="p-float-label">
+            <p-calendar styleClass="p-calendar-w-btn w-100" inputId="datanascimento-input" inputStyleClass="p-inputtext-sm" formControlName="datanascimento" dateFormat="dd/mm/yy" [maxDate]="today" [showIcon]="true"></p-calendar>
+            <label for="datanascimento-input">Data de Nascimento</label>
+          </span>
+          <inga-input-error [control]="form.get('datanascimento')"></inga-input-error>
+        </div>
+
+        <div class="grid-area">
+          <span class="p-float-label">
+            <input id="idade-input" class="p-inputtext-sm w-100" formControlName="idade" type="text" pInputText/>
+            <label for="idade-input">Idade</label>
+          </span>
+        </div>
+
+        <div class="grid-area">
+          <span class="p-float-label">
+            <input id="hobby-input" class="p-inputtext-sm w-100" formControlName="hobby" type="text" pInputText/>
+            <label for="hobby-input">Hobby</label>
+          </span>
+          <inga-input-error [control]="form.get('hobby')"></inga-input-error>
+        </div>
+      </div>
     </div>
 
     <div card-footer>
-        <div class="buttons-area w-100 d-flex justify-content-end">
-            <button class="btn btn-outline-warning"><span>Cancelar</span></button>
-            <button class="btn btn-outline-success mx-2"><span>Salvar</span></button>
-        </div>
+      <div class="buttons-area w-100 d-flex justify-content-end">
+        <button
+          type="button"
+          class="p-button-sm p-button-outlined p-button-warning mx-2"
+          label="Cancelar"
+          pButton>
+        </button>
+
+        <button
+          type="button"
+          class="p-button-sm p-button-outlined p-button-success"
+          label="Salvar"
+          [disabled]="form.invalid"
+          (click)="save(form.value)"
+          pButton>
+        </button>
+      </div>
     </div>
-</app-card>
+  </app-card>
+</form>

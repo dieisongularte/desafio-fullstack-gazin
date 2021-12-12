@@ -1,5 +1,5 @@
 import { Component, Input} from '@angular/core';
-import { FormControl } from '@angular/forms';
+import { AbstractControl, FormControl } from '@angular/forms';
 
 @Component({
 	selector: 'inga-input-error',
@@ -8,7 +8,7 @@ import { FormControl } from '@angular/forms';
 })
 export class InputErrorComponent
 {
-	@Input() control!: FormControl;
+	@Input() control: AbstractControl | null = null;
 	@Input() alt = '';
 	@Input() msgPattern = '';
 }

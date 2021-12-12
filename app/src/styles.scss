@@ -1,1 +1,13 @@
 /* You can add global styles to this file, and also import other style files */
+.p-button.p-button-sm {
+  padding: 0.35rem 0.875rem;
+}
+
+.p-float-label input:focus ~ label,
+.p-float-label input.p-filled ~ label,
+.p-float-label textarea:focus ~ label,
+.p-float-label textarea.p-filled ~ label,
+.p-float-label .p-inputwrapper-focus ~ label,
+.p-float-label .p-inputwrapper-filled ~ label {
+  font-size: 13px;
+}

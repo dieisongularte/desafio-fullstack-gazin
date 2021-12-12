@@ -1,12 +1,33 @@
-<app-card [title]="'Dados Gerais'" [enableFooter]="true">
+<form [formGroup]="form">
+  <app-card [title]="'Dados do Nível'" [enableFooter]="true">
     <div card-body>
-        
+      <div class="grid-container mt-3 mb-2">
+        <span class="p-float-label w-100">
+          <input id="float-input" class="p-inputtext-sm w-100" formControlName="nivel" type="text" pInputText>
+          <label for="float-input">Nível</label>
+        </span>
+        <inga-input-error [control]="form.get('nivel')"></inga-input-error>
+      </div>
     </div>
 
     <div card-footer>
-        <div class="buttons-area w-100 d-flex justify-content-end">
-            <button class="btn btn-outline-warning"><span>Cancelar</span></button>
-            <button class="btn btn-outline-success mx-2"><span>Salvar</span></button>
-        </div>
+      <div class="buttons-area w-100 d-flex justify-content-end">
+        <button
+          type="button"
+          class="p-button-sm p-button-outlined p-button-warning mx-2"
+          label="Cancelar"
+          pButton>
+        </button>
+
+        <button
+          type="button"
+          class="p-button-sm p-button-outlined p-button-success"
+          label="Salvar"
+          [disabled]="form.invalid"
+          (click)="save(this.form.value)"
+          pButton>
+        </button>
+      </div>
     </div>
-</app-card>
+  </app-card>
+</form>

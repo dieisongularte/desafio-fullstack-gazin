@@ -43,8 +43,7 @@ import { KeyFilterModule } from 'primeng/keyfilter';
   exports: [
     SideBarComponent,
     HeaderComponent,
-    TextInputComponent,
-    DateInputComponent,
+    InputErrorComponent,
     TableFilterComponent,
     EmptyTableComponent,
     TableComponent,

@@ -1,4 +1,4 @@
-import { HttpClient, HttpErrorResponse, HttpHeaders } from '@angular/common/http';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable, tap } from 'rxjs';
 import { environment } from 'src/environments/environment';
@@ -14,83 +14,65 @@ export class RequestService
   )
   {}
 
-  public get(endpoint: string): Observable<any>
+  get<T>(endpoint: string): Observable<T>
   {
     const url = `${ environment.API_URL }/${ endpoint }`;
     const headers = this.headers();
 
     this.loadingService.setShowLoading(true);
-    return this.http.get<any>(url, { headers }).pipe(
+
+    return this.http.get<T>(url, { headers }).pipe(
       tap(
-        (success: any) => {
+        (success: T) => {
           this.loadingService.setShowLoading(false);
-        }
-      ),
-      tap(
-        (error: HttpErrorResponse) => {
-          this.loadingService.setShowLoading(false);
-          console.log(error);
         }
       )
     );
   }
 
-  public post(endpoint: string, data: Entity): Observable<any>
+  post<T>(endpoint: string, data: Entity): Observable<T>
   {
     const url = `${ environment.API_URL }/${ endpoint }`;
     const headers = this.headers();
 
-    return this.http.post<any>(url, data, { headers }).pipe(
+    this.loadingService.setShowLoading(true);
+
+    return this.http.post<T>(url, data, { headers }).pipe(
       tap(
-        (success: any) => {
+        (success: T) => {
           this.loadingService.setShowLoading(false);
-        }
-      ),
-      tap(
-        (error: HttpErrorResponse) => {
-          this.loadingService.setShowLoading(false);
-          console.log(error);
         }
       )
     );
   }
 
-  public put(endpoint: string, data: Entity): Observable<any>
+  put<T>(endpoint: string, data: Entity): Observable<T>
   {
     const url = `${ environment.API_URL }/${ endpoint }/${ data.id }`;
     const headers = this.headers();
 
-    return this.http.post<any>(url, data, { headers }).pipe(
+    this.loadingService.setShowLoading(true);
+
+    return this.http.put<T>(url, data, { headers }).pipe(
       tap(
-        (success: any) => {
+        (success: T) => {
           this.loadingService.setShowLoading(false);
-        }
-      ),
-      tap(
-        (error: HttpErrorResponse) => {
-          this.loadingService.setShowLoading(false);
-          console.log(error);
         }
       )
     );
   }
 
-  public delete(endpoint: string): Observable<any>
+  delete<T>(endpoint: string): Observable<T>
   {
     const url = `${ environment.API_URL }/${ endpoint }`;
     const headers = this.headers();
 
-    return this.http.post<any>(url, { headers }).pipe(
+    this.loadingService.setShowLoading(true);
+
+    return this.http.delete<T>(url, { headers }).pipe(
       tap(
-        (success: any) => {
+        (success: T) => {
           this.loadingService.setShowLoading(false);
-          console.log(success);
-        }
-      ),
-      tap(
-        (error: HttpErrorResponse) => {
-          this.loadingService.setShowLoading(false);
-          console.log(error);
         }
       )
     );

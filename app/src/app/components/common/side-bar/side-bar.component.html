@@ -1,9 +1,9 @@
 <aside class="side-bar-container" [ngClass]="{'invisible': !showSideBar, 'visible': showSideBar}">
-    <button class="close-button" (click)="hideSideBar()">
-        <i class="fa fa-times"></i>
-    </button>
+  <button type="button" class="btn btn-light close-button" (click)="hideSideBar()">
+    <i class="fa fa-times"></i>
+  </button>
 
-    <a [routerLink]="'/'" (click)="hideSideBar()">Home</a>
-    <a [routerLink]="'/desenvolvedor'" (click)="hideSideBar()">Desenvolvedor</a>
-    <a [routerLink]="'/nivel'" (click)="hideSideBar()">Nível</a>
+  <a [routerLink]="'/'" (click)="hideSideBar()">Home</a>
+  <a [routerLink]="'/desenvolvedor'" (click)="hideSideBar()">Desenvolvedor</a>
+  <a [routerLink]="'/nivel'" (click)="hideSideBar()">Nível</a>
 </aside>

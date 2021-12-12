@@ -10,12 +10,6 @@ networks:
   system-network:
     driver: bridge
 
-# Docker volumes
-volumes:
-
-  app-node-data:
-    driver: local
-
 # Docker services
 services:
 
@@ -78,6 +72,6 @@ services:
       - ${APP_MAPPED_PORT}:${APP_EXPOSED_PORT}
     volumes:
       - ./app:/var/www/html
-      - app-node-data:/var/www/html/node_modules
+      - /var/www/html/node_modules
     networks:
       - system-network

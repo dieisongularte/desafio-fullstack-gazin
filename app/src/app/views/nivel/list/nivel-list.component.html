@@ -1,7 +1,8 @@
 <app-list
   [columns]="columns"
   [registers]="niveis"
-  (edit)="redirectToNivelForm($event)">
+  (edit)="redirectToNivelForm($event)"
+  (delete)="deleteNivel($event)">
 </app-list>
 
 <br />

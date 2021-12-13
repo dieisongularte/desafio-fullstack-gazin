@@ -11,6 +11,17 @@ export class NivelService
   )
   {}
 
+  delete(id: string): Promise<Nivel>
+  {
+    return new Promise((resolve) => {
+      const endpoint = environment.NIVEL_ENDPOINT;
+
+      this.requestService
+        .delete<Nivel>(`${ endpoint }/${ id }`)
+        .subscribe((success: Nivel) => { resolve(success); });
+    });
+  }
+
   read(id: string): Promise<Nivel>
   {
     return new Promise((resolve) => {
@@ -18,9 +29,7 @@ export class NivelService
 
       this.requestService
         .get<Nivel>(`${ endpoint }/${ id }`)
-        .subscribe(
-          (success: Nivel) => { resolve(success); }
-        );
+        .subscribe((success: Nivel) => { resolve(success); });
     });
   }
 

@@ -33,33 +33,33 @@ export class DesenvolvedorService
     });
   }
 
-  async save(nivel: Desenvolvedor): Promise<Desenvolvedor>
+  async save(desenvolvedor: Desenvolvedor): Promise<Desenvolvedor>
   {
     return new Promise(async (resolve) => {
-      const wasSaved = (nivel.id === null) ? await this.create(nivel) : await this.update(nivel);
+      const result = (desenvolvedor.id === null) ? await this.create(desenvolvedor) : await this.update(desenvolvedor);
 
-      resolve(wasSaved);
+      resolve(result);
     });
   }
 
-  private create(nivel: Desenvolvedor): Promise<Desenvolvedor>
+  private create(desenvolvedor: Desenvolvedor): Promise<Desenvolvedor>
   {
     return new Promise((resolve) => {
       const endpoint = environment.DESENVOLVEDOR_ENDPOINT;
 
       this.requestService
-        .post<Desenvolvedor>(`${ endpoint }`, nivel)
+        .post<Desenvolvedor>(`${ endpoint }`, desenvolvedor)
         .subscribe((success: Desenvolvedor) => { resolve(success); });
     });
   }
 
-  private update(nivel: Desenvolvedor): Promise<Desenvolvedor>
+  private update(desenvolvedor: Desenvolvedor): Promise<Desenvolvedor>
   {
     return new Promise((resolve) => {
       const endpoint = environment.DESENVOLVEDOR_ENDPOINT;
 
       this.requestService
-        .put<Desenvolvedor>(`${ endpoint }`, nivel)
+        .put<Desenvolvedor>(`${ endpoint }`, desenvolvedor)
         .subscribe((success: Desenvolvedor) => { resolve(success); });
     });
   }

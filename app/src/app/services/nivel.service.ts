@@ -18,7 +18,9 @@ export class NivelService
 
       this.requestService
         .get<Nivel>(`${ endpoint }/${ id }`)
-        .subscribe((success: Nivel) => { resolve(success); });
+        .subscribe(
+          (success: Nivel) => { resolve(success); }
+        );
     });
   }
 
@@ -36,9 +38,9 @@ export class NivelService
   async save(nivel: Nivel): Promise<Nivel>
   {
     return new Promise(async (resolve) => {
-      const wasSaved = (nivel.id === null) ? await this.create(nivel) : await this.update(nivel);
+      const result = (nivel.id === null) ? await this.create(nivel) : await this.update(nivel);
 
-      resolve(wasSaved);
+      resolve(result);
     });
   }
 

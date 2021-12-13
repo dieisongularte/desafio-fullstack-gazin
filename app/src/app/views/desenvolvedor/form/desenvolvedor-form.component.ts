@@ -1,12 +1,13 @@
 import { Nivel } from './../../../entities/nivel';
 import { NotificationService } from './../../../services/notification.service';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { Component } from '@angular/core';
 import { DesenvolvedorService } from 'src/app/services/desenvolvedor.service';
 import { Sexo } from 'src/app/enums/sexo.enum';
 import { NivelService } from 'src/app/services/nivel.service';
 import { Desenvolvedor } from 'src/app/entities/desenvolvedor';
+import { HttpErrorResponse } from '@angular/common/http';
 
 @Component({
   selector: 'app-desenvolvedor-form',
@@ -22,10 +23,11 @@ export class DesenvolvedorFormComponent
 
   constructor(
     private activatedRoute: ActivatedRoute,
-    private formBuilder: FormBuilder,
     private desenvolvedorService: DesenvolvedorService,
+    private formBuilder: FormBuilder,
     private nivelService: NivelService,
-    private notificationService: NotificationService
+    private notificationService: NotificationService,
+    private router: Router
   )
   {
     this.buildForm();
@@ -36,11 +38,19 @@ export class DesenvolvedorFormComponent
 
   async save(desenvolvedor: Desenvolvedor): Promise<void>
   {
-    this.desenvolvedorService
-      .save(desenvolvedor)
-      .then((success: Desenvolvedor) => {
-        this.notificationService.success('Registro salvo.', 'Sucesso');
-      });
+    const result = this.desenvolvedorService.save(desenvolvedor);
+
+    if (result instanceof HttpErrorResponse)
+      return;
+
+    await this.notificationService.success('Registro gravado com sucesso.');
+
+    this.redirectToDesenvolvedorList();
+  }
+
+  redirectToDesenvolvedorList(): void
+  {
+    this.router.navigate(['..'], { relativeTo: this.activatedRoute });
   }
 
   private buildForm(): void
@@ -64,6 +74,11 @@ export class DesenvolvedorFormComponent
       return;
 
     const desenvolvedor = await this.desenvolvedorService.read(desenvolvedorId);
+
+    if (desenvolvedor instanceof HttpErrorResponse) {
+      this.redirectToDesenvolvedorList();
+      return;
+    }
 
     this.form.patchValue({
       id: desenvolvedor.id,

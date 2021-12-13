@@ -1,7 +1,7 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { HttpClient, HttpClientModule } from '@angular/common/http';
+import { HttpClient, HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -10,7 +10,6 @@ import { NotificationService } from './services/notification.service';
 import { RequestService } from './services/request.service';
 import { LoadingService } from './services/loading.service';
 import { SideBarService } from './services/side-bar.service';
-import { BrDatePipe } from './pipes/br-date.pipe';
 import { RouterModule } from '@angular/router';
 import { TranslateLoader, TranslateModule } from '@ngx-translate/core';
 import { DesenvolvedorService } from './services/desenvolvedor.service';
@@ -23,8 +22,7 @@ export function HttpLoaderFactory(http: HttpClient) {
 
 @NgModule({
   declarations: [
-    AppComponent,
-    BrDatePipe
+    AppComponent
   ],
   imports: [
     AppRoutingModule,

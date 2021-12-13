@@ -1,0 +1,29 @@
+.btn-column {
+  width: 35px;
+}
+
+::ng-deep {
+  .p-datatable .p-datatable-tbody > tr > td {
+    padding: 10px;
+  }
+
+  .p-button.p-button-sm .p-button-icon {
+    font-size: 1.075rem;
+  }
+
+  .p-button.p-button-icon-only.p-button-rounded {
+    width: 2.5rem;
+    height: 2.5rem;
+  }
+
+  #list-component {
+    .card {
+      border: none;
+
+      .card-body {
+        margin: 0;
+        padding: 0;
+      }
+    }
+  }
+}

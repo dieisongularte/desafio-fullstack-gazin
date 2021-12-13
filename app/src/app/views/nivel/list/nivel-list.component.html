@@ -1,1 +1,17 @@
-<p>nivel-list works!</p>
+<app-list
+  [columns]="columns"
+  [registers]="niveis"
+  (edit)="redirectToNivelForm($event)">
+</app-list>
+
+<br />
+
+<div class="buttons-area w-100 d-flex justify-content-end">
+  <button
+    type="button"
+    class="p-button-sm p-button-outlined"
+    label="Adicionar"
+    (click)="redirectToNivelForm('new')"
+    pButton>
+  </button>
+</div>

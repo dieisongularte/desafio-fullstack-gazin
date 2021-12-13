@@ -9,4 +9,5 @@ export class CardComponent
 {
   @Input() title: string = '';
   @Input() enableFooter: boolean = false;
+  @Input() enableHeader: boolean = false;
 }

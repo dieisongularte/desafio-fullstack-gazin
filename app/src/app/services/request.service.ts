@@ -101,10 +101,13 @@ export class RequestService
 
     switch (error.status) {
       case 404:
+        this.notificationService.warning(error.error.error);
+        break;
+      case 501:
         this.notificationService.error(error.error.error);
         break;
       case 422:
-        this.notificationService.error(error.error.message);
+        this.notificationService.warning(error.error.message);
         break;
     }
   }

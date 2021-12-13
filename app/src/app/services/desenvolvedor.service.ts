@@ -11,6 +11,17 @@ export class DesenvolvedorService
   )
   {}
 
+  delete(id: string): Promise<Desenvolvedor>
+  {
+    return new Promise((resolve) => {
+      const endpoint = environment.DESENVOLVEDOR_ENDPOINT;
+
+      this.requestService
+        .delete<Desenvolvedor>(`${ endpoint }/${ id }`)
+        .subscribe((success: Desenvolvedor) => { resolve(success); });
+    });
+  }
+
   read(id: string): Promise<Desenvolvedor>
   {
     return new Promise((resolve) => {

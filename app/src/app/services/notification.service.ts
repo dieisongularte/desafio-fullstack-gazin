@@ -4,7 +4,19 @@ import Swal, { SweetAlertResult } from 'sweetalert2';
 @Injectable()
 export class NotificationService
 {
-  public error(message: string, title: string = 'Erro'): Promise<SweetAlertResult<any>>
+  question(message: string, title: string, confirmBtnText: string, denyBtnText: string): Promise<SweetAlertResult<any>>
+  {
+    return Swal.fire({
+      title: title,
+      text: message,
+      showDenyButton: true,
+      icon: 'question',
+      confirmButtonText: confirmBtnText,
+      denyButtonText: denyBtnText
+    });
+  }
+
+  error(message: string, title: string = 'Erro'): Promise<SweetAlertResult<any>>
   {
     return Swal.fire({
       title: title,
@@ -14,7 +26,7 @@ export class NotificationService
     });
   }
 
-  public info(message: string, title: string = 'Erro'): Promise<SweetAlertResult<any>>
+  info(message: string, title: string = 'Erro'): Promise<SweetAlertResult<any>>
   {
     return Swal.fire({
       title: title,
@@ -24,7 +36,7 @@ export class NotificationService
     });
   }
 
-  public success(message: string, title: string = 'Sucesso'): Promise<SweetAlertResult<any>>
+  success(message: string, title: string = 'Sucesso'): Promise<SweetAlertResult<any>>
   {
     return Swal.fire({
       title: title,
@@ -34,7 +46,7 @@ export class NotificationService
     });
   }
 
-  public warning(message: string, title: string = 'Atenção'): Promise<SweetAlertResult<any>>
+  warning(message: string, title: string = 'Atenção'): Promise<SweetAlertResult<any>>
   {
     return Swal.fire({
       title: title,

@@ -4,29 +4,31 @@
       [columns]="columns"
       [rows]="itemsPerPage"
       [value]="registers"
-      styleClass="p-datatable-striped"
+      styleClass="p-datatable-striped p-datatable-header p-sortable-column"
       sortMode="multiple"
       [multiSortMeta]="multiSortMeta"
       [customSort]="true"
+      responsiveLayout="stack"
       (sortFunction)="customSort($event)">
       <ng-template pTemplate="header" let-columns>
         <tr>
-          <th class="border" [ngClass]="column.cssClass || ''" *ngFor="let column of columns" [pSortableColumn]="column.nestedProperty">
+          <th [ngClass]="column.cssClass || ''" *ngFor="let column of columns" [pSortableColumn]="column.nestedProperty">
             <span class="d-flex justify-content-between">
               {{ column.header }}
               <p-sortIcon [field]="column.nestedProperty"></p-sortIcon>
             </span>
           </th>
-          <th class="btn-column border"></th>
-          <th class="btn-column border"></th>
+          <th class="btn-column"></th>
+          <th class="btn-column"></th>
         </tr>
       </ng-template>
       <ng-template pTemplate="body" let-register let-columns="columns" let-i="index">
         <tr>
-          <td class="border" [ngClass]="column.cssClass || ''" *ngFor="let column of columns">
+          <td [ngClass]="column.cssClass || ''" *ngFor="let column of columns">
+            <span class="p-column-title"><strong>{{ column.header }}</strong></span>
             {{ register[column.nestedProperty] }}
           </td>
-          <td class="btn-column border">
+          <td class="btn-column">
             <button
               class="p-button-rounded p-button-outlined p-button-sm"
               icon="pi pi-pencil"
@@ -34,7 +36,7 @@
               (click)="edit.emit(register.id)">
             </button>
           </td>
-          <td class="btn-column border">
+          <td class="btn-column">
             <button
               class="p-button-danger p-button-rounded p-button-outlined p-button-sm"
               icon="pi pi-trash"
